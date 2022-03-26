@@ -26,7 +26,8 @@
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "5.0.0",
-    "eslint-plugin-unicorn": "19.0.1"
+    "eslint-plugin-unicorn": "19.0.1",
+    "@snyk/protect": "latest"
   },
   "peerDependencies": {
     "eslint": ">=6.7.2"
@@ -39,8 +40,7 @@
     "jest": "26.6.3",
     "pre-git": "3.17.1",
     "prettier": "2.2.1",
-    "semantic-release": "17.3.7",
-    "snyk": "1.439.3"
+    "semantic-release": "17.3.7"
   },
   "config": {
     "pre-git": {
@@ -73,10 +73,11 @@
     "semantic-release": "./node_modules/.bin/semantic-release",
     "clean": "rm -rf lib coverage",
     "lint": "npm run eslint",
-    "prepare": "npm run snyk:protect",
+    "prepare": "npm run snyk-protect && npm run snyk:protect",
     "test": "npm run clean && npm run lint && npm run jest",
     "compile": "npm run clean && npm run babel",
     "commit": "./node_modules/.bin/commit-wizard",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "snyk-protect": "snyk-protect"
   }
 }
